@@ -1,0 +1,29 @@
+@font-face {
+    font-family: punktype;
+    src: url(assets/fuentes/HelveticaPunk.ttf);
+}
+@font-face {
+    font-family: bluescreen;
+    src: url(assets/fuentes/Bluescreen.ttf);
+}
+body {
+    background-color: black;
+}
+h1 {
+    font-family: punktype;
+    font-size: 10vh;
+    color: #f600a4;
+    text-align: center;
+}
+p {
+    color: white;
+    font-family: bluescreen;
+}
+button {
+    background-image: url(assets/images/papel.jpeg);
+    color: #8e00f6;
+    font-family: punktype;
+    font-size: 5vh;
+    border: none;
+    padding: 5vh;
+}

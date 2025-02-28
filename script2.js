@@ -30,6 +30,6 @@ function enviarUbi(lat, lon) {
         document.getElementById("ubicacion").innerText = "Ubicación enviada con éxito";
     })
     .catch(error => {
-        document.getElementById("status").innerText = "Error enviando ubicación: " + error.message;
+        document.getElementById("ubicacion").innerText = "Error enviando ubicación: " + error.message;
     });
 }
