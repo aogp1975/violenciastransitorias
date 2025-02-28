@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>Contramapeando el acoso</title>
+    <link href="https://api.mapbox.com/mapbox-gl-js/v2.5.0/mapbox-gl.css" rel="stylesheet">
+    <script src="https://api.mapbox.com/mapbox-gl-js/v2.5.0/mapbox-gl.js"></script>
+    <style>
+        body {margin: 0; padding: 0;}
+        #map {position: absolute; top: 0; bottom: 0; width: 100%;}
+    </style>
+</head>
+<body>
+<a href="ubicacion.html"> Ubicacion </a>
+
+<div id="map"></div>
+<script>
+    mapboxgl.accessToken = 'pk.eyJ1IjoiYW9ncDE5NzUiLCJhIjoiY2wxa3pjb3l2MDVyMTNpb2IyamE2MDd6aiJ9.KPEZMDwX23m8T1kv00Df_g';
+
+    var map = new mapboxgl.Map({
+        container: 'map',
+        style: 'mapbox://styles/aogp1975/cl272mur3002314nwa4tjlp1g',
+        center: [-99.505968, 19.288687],
+        zoom: 12
+    });
+
+    //obtener archivo
+    fetch('https://geojson-stickers-backend.glitch.me/stickers.geojson')
+        .then(response => response.json())
+        .then(data => {
+            map.on('load', function() {
+                map.addSource('stickers', {
+                    type: 'geojson',
+                    data: data
+                });
+                
+                map.addLayer({
+                    id: 'stickers-layer',
+                    type:'circle',
+                    source: 'stickers',
+                    paint: {
+                        'circle-radius': 6,
+                        'circle-color': '#ff6347'
+                    }
+                });
+            });
+        });
+</script>
+
+</body>
+</html>
