@@ -3,27 +3,62 @@
     src: url(assets/fuentes/HelveticaPunk.ttf);
 }
 @font-face {
+    font-family: punk2;
+    src: url(assets/fuentes/doctor\ punk.otf);
+}
+@font-face {
     font-family: bluescreen;
     src: url(assets/fuentes/Bluescreen.ttf);
 }
 body {
-    background-color: black;
+    background-image: url(assets/images/fondo.png);
 }
 h1 {
     font-family: punktype;
     font-size: 10vh;
-    color: #f600a4;
+    text-shadow: 1vh 1vh black;
+    color: #e80046;
     text-align: center;
+    letter-spacing: 1vh;
+}
+.sobreinsta {
+    position: relative;
+    display: inline-block;
+}
+.sobreinsta img {
+    width: auto;
+    height: 70vh;
+}
+.texto {
+    position: absolute;
+    top: 43%;
+    left: 15%;
+    transform: translate(-50%, -50%);
+    transform: rotate(35deg);
+    color: blue;
+    font-size: 2.5vh;
+    font-family: bluescreen;
+}
+button {
+    background-image: url(assets/images/boton.png);
+    background-color: transparent;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    color: black;
+    height: 45vh;
+    width:45vh;
+    font-family: punk2;
+    font-size: 5vh;
+    border: none;
+    padding: 5vh;
+}
+button:hover {
+    color:blueviolet;
+    cursor:pointer;
 }
 p {
     color: white;
     font-family: bluescreen;
-}
-button {
-    background-image: url(assets/images/papel.jpeg);
-    color: #8e00f6;
-    font-family: punktype;
     font-size: 5vh;
-    border: none;
-    padding: 5vh;
 }
