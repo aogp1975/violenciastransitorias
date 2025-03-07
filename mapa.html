@@ -34,14 +34,17 @@
                     type: 'geojson',
                     data: data
                 });
-                
+                map.loadImage('https://raw.githubusercontent.com/aogp1975/violenciastransitorias/main/assets/images/star.png', (error, image) => {
+                    if (error) throw error;
+                    map.addImage('sticker', image);
+                })
                 map.addLayer({
                     id: 'stickers-layer',
-                    type:'circle',
+                    type:'symbol',
                     source: 'stickers',
-                    paint: {
-                        'circle-radius': 6,
-                        'circle-color': '#ff6347'
+                    layout: {
+                        'icon-image': 'star',
+                        'icon-size': 0.1
                     }
                 });
             });
