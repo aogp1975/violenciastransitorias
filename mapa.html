@@ -37,15 +37,16 @@
                 map.loadImage('https://github.com/aogp1975/violenciastransitorias/blob/main/assets/images/star.png', (error, image) => {
                     if (error) throw error;
                     map.addImage('star', image);
-                })
-                map.addLayer({
+                    
+                    map.addLayer({
                     id: 'stickers-layer',
                     type:'symbol',
                     source: 'stickers',
                     layout: {
                         'icon-image': 'star',
-                        'icon-size': 0.1
+                        'icon-size': 1
                     }
+                });
                 });
             });
         });
