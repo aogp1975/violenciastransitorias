@@ -34,6 +34,7 @@
                     type: 'geojson',
                     data: data
                 });
+
                 map.loadImage('https://raw.githubusercontent.com/aogp1975/violenciastransitorias/main/assets/images/star.png', (error, image) => {
                     if (error) throw error;
                     map.addImage('star', image);
@@ -44,12 +45,12 @@
                     source: 'stickers',
                     layout: {
                         'icon-image': 'star',
-                        'icon-size': 1
+                        'icon-size': 0.2
                     }
                 });
-                });
             });
-        });
+         });
+    });
 </script>
 
 </body>
