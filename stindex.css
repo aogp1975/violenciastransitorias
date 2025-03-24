@@ -1,0 +1,65 @@
+
+body {
+    background-color: black;
+}
+/*mapa pequeño*/
+.mapmini {
+    position: relative;
+    top: 70%;
+    left: 60%;
+    width: 20vw;
+    height: 25vh;
+    border: none;
+}
+iframe {
+    position: fixed;
+    width: 20vw;
+    height: 25vh;
+    border: none;
+}
+.linkmap {
+    position:absolute;
+    top: 0;
+    left: 0;
+    width: 15vw;
+    height: 15vh;
+    z-index: 10;
+    background: rgba(0,0,0,0);
+}
+/*menu*/
+.menubt {
+    background-image: url(assets/images/menuico.png);
+    width: 10vh;
+    height: 10vh;
+    font-size: 3vh;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+.menupr {
+    position: relative;
+    display: inline-block;
+}
+.contmenu {
+    display: none;
+    left: 0;
+    position: absolute;
+    background-color: #CE4257;
+    min-width: 16vh;
+    z-index: 10;
+}
+.contmenu a {
+    color: purple;
+    text-decoration: none;
+    display: block;
+}
+.contmenu a:hover {
+    background-color: blue;
+}
+.menupr:hover .contmenu {
+    display: block;
+}
+
+.dropdown:hover .menubt {
+    background-color: aqua;
+}
