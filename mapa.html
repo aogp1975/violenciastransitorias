@@ -2,19 +2,20 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contramapeando el acoso</title>
     <link href="https://api.mapbox.com/mapbox-gl-js/v2.5.0/mapbox-gl.css" rel="stylesheet">
     <script src="https://api.mapbox.com/mapbox-gl-js/v2.5.0/mapbox-gl.js"></script>
     <style>
-        body {margin: 0; padding: 0;}
-        #map {position: absolute; top: 0; bottom: 0; width: 100%;}
+        body { margin: 0; padding: 0; }
+        #map { position: absolute; top: 0; bottom: 0; width: 100%; }
     </style>
 </head>
 <body>
-<a href="ubicacion.html"> Ubicacion </a>
 
+<a href="ubicacion.html"> Ubicación </a>
 <div id="map"></div>
+
 <script>
     mapboxgl.accessToken = 'pk.eyJ1IjoiYW9ncDE5NzUiLCJhIjoiY2wxa3pjb3l2MDVyMTNpb2IyamE2MDd6aiJ9.KPEZMDwX23m8T1kv00Df_g';
 
@@ -25,20 +26,27 @@
         zoom: 12
     });
 
-    //obtener archivo
-    fetch('https://geojson-stickers-backend.glitch.me/stickers.geojson')
-        .then(response => response.json())
-        .then(data => {
-            map.on('load', function() {
-                map.addSource('stickers', {
-                    type: 'geojson',
-                    data: data
-                });
+    map.on('load', function () {
+        // Cargar imagen ANTES de agregar capas
+        map.loadImage('https://cdn.glitch.global/74cdea08-eedd-447b-b9f5-de3a59867dbf/star.png?v=1741310640806', function (error, image) {
+            if (error) {
+                console.error('Error al cargar la imagen:', error);
+                return;
+            }
+            map.addImage('star', image);
 
-                map.loadImage('https://cdn.glitch.global/74cdea08-eedd-447b-b9f5-de3a59867dbf/star.png?v=1741310640806', (error, image) => {
-                    if (error) throw error;
-                    map.addImage('star', image);
-                    
+            // Obtener archivo GeoJSON
+            fetch('https://geojson-stickers-backend.glitch.me/stickers.geojson')
+                .then(response => response.json())
+                .then(data => {
+                    console.log('GeoJSON cargado:', data); // Verificar si el archivo se carga
+
+                    map.addSource('stickers', {
+                        type: 'geojson',
+                        data: data
+                    });
+
+                    // Capa de heatmap
                     map.addLayer({
                         id: 'heatmap-layer',
                         type: 'heatmap',
@@ -61,19 +69,23 @@
                             'heatmap-opacity': ['interpolate', ['linear'], ['zoom'], 10, 1, 15, 0]
                         }
                     });
-                    
+
+                    // Capa de puntos interactivos
                     map.addLayer({
-                    id: 'stickers-layer',
-                    type:'symbol',
-                    source: 'stickers',
-                    layout: {
-                        'icon-image': 'star',
-                        'icon-size': 0.04
-                    }
-                });
-            });
-         });
+                        id: 'stickers-layer',
+                        type: 'symbol',
+                        source: 'stickers',
+                        minzoom: 14, // Aparecen cuando el usuario hace zoom
+                        layout: {
+                            'icon-image': 'star',
+                            'icon-size': 0.04
+                        }
+                    });
+                })
+                .catch(error => console.error('Error al cargar GeoJSON:', error));
+        });
     });
+
 </script>
 
 </body>

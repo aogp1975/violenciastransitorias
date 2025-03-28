@@ -1,3 +1,7 @@
+*{
+    margin: 0;
+    box-sizing: border-box;
+}
 @font-face {
     font-family: punktype;
     src: url(assets/fuentes/HelveticaPunk.ttf);
@@ -13,21 +17,71 @@
 body {
     background-image: url(assets/images/fondo.png);
 }
+.titulo {
+    grid-area: header header;
+}
+.menupr {
+    grid-area: menu;
+}
+.contmenu {
+    display: none;
+    left: 0;
+    position: absolute;
+    background-color: #CE4257;
+    min-width: 16vh;
+    z-index: 10;
+}
+.contmenu a {
+    color: purple;
+    text-decoration: none;
+    display: block;
+}
+.contmenu a:hover {
+    background-color: blue;
+}
+.menupr:hover .contmenu {
+    display: block;
+}
+
+.dropdown:hover .menubt {
+    background-color: aqua;
+}
+.containall {
+    display: grid;
+    grid-template-areas: 
+    'menu header header header'
+    'ubicacion space space proyecto'
+    'footer footer footer footer';
+    padding: 0;
+}
+.containall > div {
+    padding: 0;
+}
+.izq {
+    grid-area: ubicacion;
+    align-items: center;
+}
+.der {
+    grid-area: proyecto;
+    text-align: right;
+}
 h1 {
     font-family: punktype;
-    font-size: 10vh;
+    font-size: 8vh;
     text-shadow: 1vh 1vh black;
-    color: #e80046;
+    color: #ce4257;
     text-align: center;
     letter-spacing: 1vh;
 }
 .sobreinsta {
     position: relative;
     display: inline-block;
+    width: auto;
 }
 .sobreinsta img {
-    width: auto;
-    height: 70vh;
+    display: block;
+    max-width: 100%;
+    height: auto;
 }
 .texto {
     position: absolute;
@@ -36,29 +90,85 @@ h1 {
     transform: translate(-50%, -50%);
     transform: rotate(35deg);
     color: blue;
-    font-size: 2.5vh;
+    font-size: 3vh;
     font-family: bluescreen;
 }
-button {
+.but-ubi {
     background-image: url(assets/images/boton.png);
     background-color: transparent;
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
     color: black;
-    height: 45vh;
-    width:45vh;
-    font-family: punk2;
-    font-size: 5vh;
+    height: 40vh;
+    width:40vh;
+    font-family: bluescreen;
+    font-size: 2vh;
     border: none;
-    padding: 5vh;
+    padding: 4vh;
 }
-button:hover {
+.but-ubi:hover {
     color:blueviolet;
     cursor:pointer;
+}
+.menubt {
+    background-image: url(assets/images/menuico.png);
+    width: 10vh;
+    height: 10vh;
+    font-size: 3vh;
+    color: white;
+    border: none;
+    cursor: pointer;
 }
 p {
     color: white;
     font-family: bluescreen;
-    font-size: 5vh;
+    font-size: 4vh;
+}
+
+@media screen and (max-width: 768px) {
+    .containall {
+        display: grid;
+        grid-template-areas: 
+        'menu header'
+        'ubicacion proyecto'
+        'footer footer';
+        padding: 0;
+    }
+    .menubt {
+        width: 5vh;
+        height: 5vh;
+        font-size: 1.5vh;
+    }
+    .titulo {
+        justify-content: left;
+    }
+    .izq, .der {
+        width: 100%;
+        justify-content: center;
+    }
+    .but-ubi {
+        height: 20vh;
+        width: 20vh;
+        font-size: 1vh;
+    }
+    h1 {
+        font-size: 3vh;
+        letter-spacing: 0.3vh;
+    }
+    p {
+        font-size: 2vh;
+    }
+    .sobreinsta img {
+        height: auto;
+        width: 30vh;
+    }
+    .but-ubi {
+        height: 15vh;
+        width: 15vh;
+        font-size:1.2vh;
+    }
+    .texto {
+        font-size:1vh;
+    }
 }

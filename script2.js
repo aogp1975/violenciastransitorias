@@ -27,9 +27,9 @@ function enviarUbi(lat, lon) {
     })
     .then(response => response.json())
     .then(data => {
-        document.getElementById("ubicacion").innerText = "Ubicación enviada con éxito";
+        document.getElementById("ubicacion").innerText = "¡Gracias! Este espacio ha sido registrado:)";
     })
     .catch(error => {
-        document.getElementById("ubicacion").innerText = "Error enviando ubicación: " + error.message;
+        document.getElementById("ubicacion").innerText = "Error enviando la ubicación: " + error.message;
     });
 }
