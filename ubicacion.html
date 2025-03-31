@@ -10,21 +10,21 @@
 <body>
 <div class="containall">
 <div class="menupr">
-    <button class="menubt"> ★★★ </button>
+    <button class="menubt" onclick="toggleMenu()"> ★★★ </button>
     <div class="contmenu">
-    <a href="ubicacion.html"> Ubicacion </a>
-    <a href="mapa.html">Mapa</a>
-    <a href="acerca.html">Acerca</a>
-    <a href="manual.html">Participa</a>
+    <a href="ubicacion.html"> ★Ubicacion </a>
+    <a href="mapa.html">Mapa★</a>
+    <a href="acerca.html">★Acerca</a>
+    <a href="manual.html">Participa★</a>
     </div>
 </div>
     <div class="titulo">
-    <h1>¡Este espacio fue recuperado!</h1>
+    <img src="assets/images/title.png">
     </div>
     <div class="izq">
-        <h1>Registra tu sticker en el mapa</h1>
-        <center><button class="but-ubi" onclick = "obtUbi()">Registra el sticker</button>
-        <p id = "ubicacion"> Esperando ubicación... </p></center>
+        <h1><span>Registra</span><span> tu sticker en el </span><span>mapa</span></h1>
+        <center><button class="but-ubi" onclick = "obtUbi()">Toca aquí para registrar</button>
+        <p id = "ubicacion"> <span> Esperando ubicación...</span> </p></center>
         <div class="sobreinsta">
         <img src="assets/images/insta.png">
         <div class="texto"> 
@@ -35,8 +35,17 @@
     </div>  
     </div>    
     <div class = "der">
-        <h1>¿Encontraste este sticker?</h1>
+        <h1><span>¿Encontraste este</span><br><span> sticker?</span></h1>
         <p>Conoce el proyecto.</p>
+    </div>
+    <div class = "abader">
+        <h1> <span>Visita el mapa</span> </h1>
+        <iframe src="https://aogp1975.github.io/violenciastransitorias/mapa.html"> 
+        </iframe>
+        <a class="linkmap" href="https://aogp1975.github.io/violenciastransitorias/mapa.html" target="_blank"></a>
+    </div>
+    <div class="abaizq">
+        <h1>Recupera tus espacios</h1>
     </div>
 </div>
 </body>

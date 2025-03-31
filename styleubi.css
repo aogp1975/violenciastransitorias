@@ -1,6 +1,8 @@
+/*grid*/
 *{
     margin: 0;
     box-sizing: border-box;
+/*cargar fuentes*/
 }
 @font-face {
     font-family: punktype;
@@ -8,17 +10,23 @@
 }
 @font-face {
     font-family: punk2;
-    src: url(assets/fuentes/doctor\ punk.otf);
+    src: url(assets/fuentes/Punktype.ttf);
 }
 @font-face {
     font-family: bluescreen;
     src: url(assets/fuentes/Bluescreen.ttf);
 }
+
 body {
-    background-image: url(assets/images/fondo.png);
+    background-image:url(assets/images/fondo.png);
 }
 .titulo {
     grid-area: header header;
+    margin-left: -30vw;
+}
+.titulo img {
+    height: 40vh;
+    width: auto;
 }
 .menupr {
     grid-area: menu;
@@ -27,22 +35,24 @@ body {
     display: none;
     left: 0;
     position: absolute;
-    background-color: #CE4257;
+    background-image: url(assets/images/menuico.png);
     min-width: 16vh;
-    z-index: 10;
+    z-index: 100;
+    font-family: punk2;
+    font-size: 5vh;
 }
 .contmenu a {
-    color: purple;
+    color: black;
     text-decoration: none;
     display: block;
+    padding: 3vh;
 }
 .contmenu a:hover {
-    background-color: blue;
+    background-color: #791E947F;
 }
-.menupr:hover .contmenu {
+.menupr .contmenu.active {
     display: block;
 }
-
 .dropdown:hover .menubt {
     background-color: aqua;
 }
@@ -50,8 +60,8 @@ body {
     display: grid;
     grid-template-areas: 
     'menu header header header'
-    'ubicacion space space proyecto'
-    'footer footer footer footer';
+    'ubicacion space space mapa'
+    'manual footer footer proyecto';
     padding: 0;
 }
 .containall > div {
@@ -63,15 +73,47 @@ body {
 }
 .der {
     grid-area: proyecto;
-    text-align: right;
+    align-items: center;
+}
+.abader {
+    grid-area: mapa;
+    align-items: center;
+}
+.abaizq {
+    grid-area: manual;
+}
+iframe {
+    width: auto;
+    height: 50vh;
+    border: none;
+    align-content: center;
+}
+.linkmap {
+    width: 15vw;
+    height: 15vh;
+    z-index: 10;
+    background: rgba(0,0,0,0);
 }
 h1 {
     font-family: punktype;
     font-size: 8vh;
-    text-shadow: 1vh 1vh black;
-    color: #ce4257;
+    text-shadow: 0.1vh 0.1vh #45474A;
+    color: #E22D48;
     text-align: center;
-    letter-spacing: 1vh;
+    letter-spacing: 0.3vh;
+    line-height: 1.2;
+}
+h1 span {
+    background-color: black;
+    box-shadow: -0.5vh 0 0 black,
+                0.5vh 0 0 black;
+    padding: 0 1vh;
+}
+p span {
+    background-color: black;
+    box-shadow: -0.5vh 0 0 black,
+                0.5vh 0 0 black;
+    padding: 0 1vh;
 }
 .sobreinsta {
     position: relative;
@@ -81,12 +123,13 @@ h1 {
 .sobreinsta img {
     display: block;
     max-width: 100%;
-    height: auto;
+    height: 60vh;
+    width: auto;
 }
 .texto {
     position: absolute;
-    top: 43%;
-    left: 15%;
+    top: 33%;
+    left: 22%;
     transform: translate(-50%, -50%);
     transform: rotate(35deg);
     color: blue;
@@ -94,7 +137,7 @@ h1 {
     font-family: bluescreen;
 }
 .but-ubi {
-    background-image: url(assets/images/boton.png);
+    background-image: url(assets/images/starico.svg);
     background-color: transparent;
     background-size: cover;
     background-repeat: no-repeat;
@@ -102,17 +145,17 @@ h1 {
     color: black;
     height: 40vh;
     width:40vh;
-    font-family: bluescreen;
-    font-size: 2vh;
+    font-family: punk2;
+    font-size: 4vh;
     border: none;
     padding: 4vh;
 }
 .but-ubi:hover {
-    color:blueviolet;
+    color:#791e94;
     cursor:pointer;
 }
 .menubt {
-    background-image: url(assets/images/menuico.png);
+    background-color:#E22D48;
     width: 10vh;
     height: 10vh;
     font-size: 3vh;
@@ -124,6 +167,7 @@ p {
     color: white;
     font-family: bluescreen;
     font-size: 4vh;
+    text-align:center;
 }
 
 @media screen and (max-width: 768px) {
@@ -131,17 +175,25 @@ p {
         display: grid;
         grid-template-areas: 
         'menu header'
-        'ubicacion proyecto'
-        'footer footer';
+        'ubicacion mapa'
+        'manual proyecto';
         padding: 0;
+    }
+    .titulo img {
+        height: 20vh;
+        width: auto;
     }
     .menubt {
         width: 5vh;
         height: 5vh;
         font-size: 1.5vh;
     }
+    .contmenu {
+        font-size: 1.5vh;
+        padding: 0.5vh;
+    }
     .titulo {
-        justify-content: left;
+       align-items: left;
     }
     .izq, .der {
         width: 100%;
@@ -166,9 +218,9 @@ p {
     .but-ubi {
         height: 15vh;
         width: 15vh;
-        font-size:1.2vh;
+        font-size:1.5vh;
     }
     .texto {
-        font-size:1vh;
+        font-size:0.9vh;
     }
 }

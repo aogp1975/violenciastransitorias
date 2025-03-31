@@ -33,3 +33,19 @@ function enviarUbi(lat, lon) {
         document.getElementById("ubicacion").innerText = "Error enviando la ubicación: " + error.message;
     });
 }
+
+document.addEventListener("DOMContentLoaded", function () {
+    const menuButton = document.querySelector(".menubt");
+    const menu = document.querySelector(".contmenu");
+
+    menuButton.addEventListener("click", function (event) {
+        menu.classList.toggle("active");
+        event.stopPropagation(); // Evita que el clic se propague al document
+    });
+
+    document.addEventListener("click", function (event) {
+        if (!menu.contains(event.target) && !menuButton.contains(event.target)) {
+            menu.classList.remove("active");
+        }
+    });
+});
