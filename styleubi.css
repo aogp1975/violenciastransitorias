@@ -34,7 +34,7 @@ body {
 .contmenu {
     display: none;
     left: 0;
-    position: absolute;
+    position: fixed;
     background-image: url(assets/images/menuico.png);
     min-width: 16vh;
     z-index: 100;
