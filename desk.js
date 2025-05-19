@@ -29,7 +29,7 @@ function enviardatos() {
         formData.append("imagen", archivo);
       }
 
-      fetch("https://geojson-stickers-backend.glitch.me/guardar_todo", {
+      fetch("https://geojson-stickers-backend.glitch.me/guardar_completo", {
         method: 'POST',
         body: formData
       })
