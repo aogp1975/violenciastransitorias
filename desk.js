@@ -14,35 +14,20 @@ function opwin(id) {
 function cerrarwin(id) {
   document.getElementById(id).classList.add("hidewin");
 }
-function enviardatos() {
+function registrarubi() {
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(function(pos) {
       const lat = pos.coords.latitude;
       const lon = pos.coords.longitude;
-
-      const archivo = document.getElementById("input-imagen").files[0];
-
-      const formData = new FormData();
-      formData.append("latitud", lat);
-      formData.append("longitud", lon);
-      if(archivo) {
-        formData.append("imagen", archivo);
-      }
-
-      fetch("https://geojson-stickers-backend.glitch.me/guardar_completo", {
+      document.getElementById("result").innerText = `Ubicación registrada`;
+      fetch("https://geojson-stickers-backend.glitch.me/guardar_ubi", {
         method: 'POST',
-        body: formData
-      })
-      .then(res => res.json())
-      .then(() => {
-        alert("¡Sticker registrado!");
-        map.getSource('stickers').setData('https://geojson-stickers-backend.glitch.me/stickers.geojson');
-      })
-      .catch(err => alert("error" + err));
+        headers: {'Content-Type': 'application/json' },
+        body: JSON.stringify({ latitud: lat, longitud: lon})
+      });
     });
   }
 }
-
 
 mapboxgl.accessToken = 'pk.eyJ1IjoiYW9ncDE5NzUiLCJhIjoiY2wxa3pjb3l2MDVyMTNpb2IyamE2MDd6aiJ9.KPEZMDwX23m8T1kv00Df_g';
 
