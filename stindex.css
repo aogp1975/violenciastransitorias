@@ -1,65 +1,241 @@
+/*grid*/
+*{
+    margin: 0;
+    box-sizing: border-box;
+/*cargar fuentes*/
+}
+@font-face {
+    font-family: punktype;
+    src: url(assets/fuentes/HelveticaPunk.ttf);
+}
+@font-face {
+    font-family: punk2;
+    src: url(assets/fuentes/Punktype.ttf);
+}
+@font-face {
+    font-family: bluescreen;
+    src: url(assets/fuentes/Bluescreen.ttf);
+}
+/*página*/
 
 body {
-    background-color: black;
+    background-image:url(assets/images/web1.png);
 }
-/*mapa pequeño*/
-.mapmini {
-    position: relative;
-    top: 70%;
-    left: 60%;
-    width: 20vw;
-    height: 25vh;
-    border: none;
+.titulo {
+    grid-area: header;
+    background-image: url(assets/images/sky1.png);
+}
+.titulo img {
+    height: 40vh;
+    width: auto;
+}
+.containall {
+    display: grid;
+    grid-template-areas: 
+    'header header header'
+    'murcen murcen murcen'
+    'poste mapa mapext'
+    'alto poster manual';
+    padding: 0;
+}
+.containall > div {
+    padding: 0;
+}
+.muro {
+    background-image: url(assets/images/muro1.jpg);
+    grid-area: murcen;
+    align-items: center;
+    overflow: hidden;
+}
+.fondo-1 {
+    background-image: url(assets/images/muro1.jpg);
+}
+.fondo-2 {
+    background-image: url(assets/images/muro2.jpg);
+}
+.fondo-3 {
+    background-image: url(assets/images/muro3.jpg);
+}
+.muroa {
+    display: none;
+    text-align: center;
+    animation: fade 0.5s ease-in-out;
+}
+.muroa.active {
+    display: block;
+}
+.flecha {
+    position: absolute; 
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    z-index: 2;
+}
+.flecha.izq {
+    left: 1rem;
+}
+.flecha.der {
+    right: 1rem;
+}
+@keyframes fade {
+    from {opacity: 0;}
+    to {opacity: 1;}
+}
+.der {
+    grid-area: fleder;
+    align-items: center;
+}
+.abader {
+    grid-area: mapa;
+    align-items: center;
+}
+.abaizq {
+    grid-area: manual;
+}
+.abader img {
+    height: 20vh;
+    width: auto;
 }
 iframe {
-    position: fixed;
-    width: 20vw;
-    height: 25vh;
+    width: auto;
+    height: 50vh;
     border: none;
+    align-content: center;
 }
 .linkmap {
-    position:absolute;
-    top: 0;
-    left: 0;
     width: 15vw;
     height: 15vh;
     z-index: 10;
     background: rgba(0,0,0,0);
 }
-/*menu*/
+h1 {
+    font-family: punktype;
+    font-size: 8vh;
+    text-shadow: 0.1vh 0.1vh #45474A;
+    color: #E22D48;
+    text-align: center;
+    letter-spacing: 0.3vh;
+    line-height: 1.2;
+}
+h1 span {
+    background-color: black;
+    box-shadow: -0.5vh 0 0 black,
+                0.5vh 0 0 black;
+    padding: 0 1vh;
+}
+p span {
+    background-color: black;
+    box-shadow: -0.5vh 0 0 black,
+                0.5vh 0 0 black;
+    padding: 0 1vh;
+}
+.sobreinsta {
+    position: relative;
+    display: inline-block;
+    width: auto;
+}
+.sobreinsta img {
+    display: block;
+    max-width: 100%;
+    height: 60vh;
+    width: auto;
+}
+.texto {
+    position: absolute;
+    top: 33%;
+    left: 22%;
+    transform: translate(-50%, -50%);
+    transform: rotate(35deg);
+    color: #791e94;
+    font-size: 3vh;
+    font-family: bluescreen;
+}
+.but-ubi {
+    background-image: url(assets/images/starico.svg);
+    background-color: transparent;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    color: black;
+    height: 40vh;
+    width:40vh;
+    font-family: punk2;
+    font-size: 4vh;
+    border: none;
+    padding: 4vh;
+}
+.but-ubi:hover {
+    color:#791e94;
+    cursor:pointer;
+}
 .menubt {
-    background-image: url(assets/images/menuico.png);
+    background-color:#E22D48;
     width: 10vh;
     height: 10vh;
     font-size: 3vh;
+    text-align: left;
     color: white;
     border: none;
     cursor: pointer;
 }
-.menupr {
-    position: relative;
-    display: inline-block;
-}
-.contmenu {
-    display: none;
-    left: 0;
-    position: absolute;
-    background-color: #CE4257;
-    min-width: 16vh;
-    z-index: 10;
-}
-.contmenu a {
-    color: purple;
-    text-decoration: none;
-    display: block;
-}
-.contmenu a:hover {
-    background-color: blue;
-}
-.menupr:hover .contmenu {
-    display: block;
+p {
+    color: white;
+    font-family: bluescreen;
+    font-size: 4vh;
+    text-align:center;
 }
 
-.dropdown:hover .menubt {
-    background-color: aqua;
+@media screen and (max-width: 768px) {
+    .containall {
+        display: grid;
+        grid-template-areas: 
+        'menu header'
+        'ubicacion mapa'
+        'manual proyecto';
+        padding: 0;
+    }
+    .titulo img {
+        height: 20vh;
+        width: auto;
+    }
+    .menubt {
+        width: 6vh;
+        height: 6vh;
+        font-size: 1.5vh;
+    }
+    .contmenu {
+        font-size: 1.5vh;
+        padding: 0.5vh;
+    }
+    .titulo {
+       align-items: left;
+    }
+    .izq, .der {
+        width: 100%;
+        justify-content: center;
+    }
+    .but-ubi {
+        height: 20vh;
+        width: 20vh;
+        font-size: 1vh;
+    }
+    h1 {
+        font-size: 3vh;
+        letter-spacing: 0.3vh;
+    }
+    p {
+        font-size: 2vh;
+    }
+    .sobreinsta img {
+        height: auto;
+        width: 30vh;
+    }
+    .but-ubi {
+        height: 15vh;
+        width: 15vh;
+        font-size:1.5vh;
+    }
+    .texto {
+        font-size:0.9vh;
+    }
 }

@@ -1,29 +1,124 @@
 <!DOCTYPE html>
 <html lang="es">
-<head>
+    <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
-    <title>Violencias Transitorias</title>
-    <link rel="stylesheet" href="stindex.css">
+    <title>Pruebasss</title>
+    <link href="https://api.mapbox.com/mapbox-gl-js/v2.5.0/mapbox-gl.css" rel="stylesheet">
+    <script src="https://api.mapbox.com/mapbox-gl-js/v2.5.0/mapbox-gl.js"></script>
+    <link rel="stylesheet" href="desk.css">
 </head>
+
 <body>
-<div class="menupr">
-    <button class="menubt"> ★★★ </button>
-    <div class="contmenu">
-    <a href="ubicacion.html"> Ubicacion </a>
-    <a href="mapa.html">Mapa</a>
-    <a href="acerca.html">Acerca</a>
-    <a href="manual.html">Participa</a>
+    <script src="desk.js" defer></script>
+
+
+    <div id="popinicio" class="popup">
+        <div class ="popcontent">
+            <img src="assets/images/CARTEL1.png">
+            <img src="assets/images/stic.gif"> <br>
+             <div class="boton">
+                <img src="assets/images/flecha1.png">
+                <button onclick="cerrarpop()"> Comenzar el recorrido </button>
+            </div>
+             <h2> Uso de Geolocalización</h2>
+            <p> Este sitio utiliza la ubicación de tu dispositivo con fines artísticos y de investigación, <br>
+                no se recolectan datos personales, ni se comparte tu ubicación a terceros, <br> únicamente funciona 
+                para centrar el mapa y para registrar <br> la ubicación de los stickers colocados. <br>
+                Al continuar, aceptas el uso de tus datos de geolocalización con estos fines. <br> Si prefieres no compartirla, aún 
+                puedes navegar por el sitio libremente.  
+                </p>
+        </div>
     </div>
-</div>
 
-<h1>¿Encontraste este sticker?</h1>
-<p>Conoce el proyecto.</p>
+    <div id="ventana-registro" class="hidewin">
+        <div class="barraup">
+            <span>Registrar sticker</span>
+            <button onclick="cerrarwin('ventana-registro')">X</button>
+        </div>
+        <div class="wincontent">
+            <p>Registra tu ubicación actual</p>
+            <p id="result">Esperando ...</p>
 
-<div class="mapmini">
-    <iframe src="https://aogp1975.github.io/violenciastransitorias/mapa.html"> 
-    </iframe>
-    <a class="linkmap" href="https://aogp1975.github.io/violenciastransitorias/mapa.html" target="_blank"></a>
-</div>
+            <p>Sube una foto del sticker</p>
+            <input type="file" accept="image/png, image/jpeg" id="input-imagen">
+            <button onclick="enviardatos()"> Registrar sticker </button>
+        </div>
+    </div>
+
+    <div id="ventana-info" class="hidewin">
+        <div class="barraup">
+            <span>Acerca del proyecto</span>
+            <button onclick ="cerrarwin('ventana-info')">X</button>
+        </div>
+        <div class="wincontent">
+            <p>Statement</p>
+            <a href="talleres.html">Talleres</a>
+        </div>
+    </div>
+
+    <div id="ventana-taller" class="hidewin">
+        <div class="barraup">
+            <span>Manual e info</span>
+            <button onclick="cerrarwin('ventana-taller')">X</button>
+        </div>
+        <div class="wincontent">
+            <p>Aquí habrá información de los talleres</p>
+            <p>Consulta talleres anteriores, metodologías y recursos.</p>
+        </div>
+    </div>
+    <div class="grid-collage">
+          <div id="map"></div>
+        <div class="bloque cartel1">
+            <div id="sky3">
+                <img src="assets/images/sky3.jpg">
+            </div>
+        </div>
+        <div class="bloque cartel2">
+            <div id="poste">
+                <img src="assets/images/poste.gif">
+            </div>
+        </div>
+        <div class="bloque cartel3">
+             <div id="sky2">
+                <img src="assets/images/sky2.jpg">
+            </div>
+        </div>
+        <div class="bloque cartel4">
+            <div id="stick">
+                <img src="assets/images/deb2.png">
+            </div>
+        </div>
+        <div class="bloque cartel5" onclick="opwin('ventana-registro')">
+           <div id="registro">
+                <img src="assets/images/cartel2.png">
+            </div>
+        </div>
+        <div class="bloque cartel6" onclick="opwin('ventana-info')">
+            <div id="acerca">
+                <img src="assets/images/cartel3.png">
+            </div>
+        </div>
+        <div class="bloque cartel7">
+            <div id="sky1">
+                <img src="assets/images/sky1.png">
+            </div>
+        </div>
+        <div class="bloque cartel8">
+             <div id="fondo1">
+                <img src="assets/images/web1.png">
+            </div>
+        </div>
+        <div class="bloque cartel9" onclick="opwin('ventana-taller')">
+             <div id="talleres">
+                <img src="assets/images/cartel4.png">
+            </div>
+        </div>
+         <div class="bloque cartel10">
+             <div id="sticker">
+                <img src="assets/images/sticker1.png">
+            </div>
+        </div>
+    </div>
 </body>
 </html>

@@ -58,3 +58,54 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 });
+
+let slideActual = 0;
+const slides = document.querySelectorAll('.muroa');
+
+const clfondo =['fondo-1', 'fondo-2', 'fondo-3'];
+
+const btnNext = document.getElementById('btn-next');
+const btnPrev = document.getElementById('btn-prev');
+
+const muroSection = document.getElementById("muro-section");
+
+const imgflec = [
+    {
+        prev: "assets/images/flecha1.png",
+        next: "assets/images/flecha2.png"
+    },
+    {
+        prev: "assets/images/flecha3.png",
+        next: "assets/images/flecha2.png"
+    },
+    {
+        prev: "assets/images/flecha2.png",
+        next: "assets/images/flecha1.png"
+    }
+];
+
+function mostrarSlide(index) {
+    slides.forEach((slide, i) => {
+        slide.classList.toggle('active', i === index);
+    });
+
+    btnNext.src = imgflec[index].next;
+    btnPrev.src = imgflec[index].prev;
+
+    muroSection.classList.remove(...clfondo);
+    muroSection.classList.add(clfondo[index]);
+}
+
+function siguiente() {
+    slideActual = (slideActual + 1) % slides.length;
+    mostrarSlide(slideActual);
+}
+
+function anterior() {
+    slideActual = (slideActual - 1 + slides.length) % slides.length;
+    mostrarSlide(slideActual);
+}
+
+mostrarSlide(slideActual);
+
+
