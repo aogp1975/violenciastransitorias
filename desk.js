@@ -19,11 +19,18 @@ function registrarubi() {
     navigator.geolocation.getCurrentPosition(function(pos) {
       const lat = pos.coords.latitude;
       const lon = pos.coords.longitude;
+      const tipo = document.getElementById("tiposticker").value;
+
       document.getElementById("result").innerText = `Ubicación registrada`;
-      fetch("https://geojson-stickers-backend.glitch.me/guardar_ubi", {
+
+      fetch("https://backend-vt.onrender.com/guardar_ubi", {
         method: 'POST',
         headers: {'Content-Type': 'application/json' },
-        body: JSON.stringify({ latitud: lat, longitud: lon})
+        body: JSON.stringify({ 
+          latitud: lat, 
+          longitud: lon,
+          tipo: tipo
+        })
       });
     });
   }
@@ -42,11 +49,11 @@ function initmap (center, showmarcador = false) {
   });
 
   map.on('load', function () {
-    map.loadImage('https://cdn.glitch.global/74cdea08-eedd-447b-b9f5-de3a59867dbf/star.png?v=1747430269618', function (error, image) {
+    map.loadImage('https://backend-vt.onrender.com/public/pasamos.png', function (error, image) {
       if (error) return console.error(error);
-      map.addImage('star', image);
+      map.addImage('pasamos', image);
 
-      fetch('https://geojson-stickers-backend.glitch.me/stickers.geojson')
+      fetch('https://backend-vt.onrender.com/stickers.geojson')
         .then(res => res.json())
         .then(data => {
           map.addSource('stickers', {
@@ -59,7 +66,7 @@ function initmap (center, showmarcador = false) {
             type: 'symbol',
             source: 'stickers',
             layout: {
-              'icon-image': 'star',
+              'icon-image': 'pasamos',
               'icon-size': 0.07
             }
           });

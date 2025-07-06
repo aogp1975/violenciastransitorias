@@ -11,6 +11,27 @@
     src: url(assets/fuentes/Bluescreen.ttf);
 }
 
+.menu {
+  margin: 0;
+  padding: 0;
+  width: 10vw;
+  background-color: aqua;
+  position: fixed;
+  height: 100%;
+  overflow: auto;
+  z-index: 2;
+}
+.menu a {
+  display: block;
+  color: black;
+  padding: 16px;
+  text-decoration: none;
+}
+.menu a:hover {
+  background-color: purple;
+  color: white;
+}
+
 
 .popup {
   position: fixed;
@@ -136,22 +157,28 @@
 .grid-collage {
   display: grid;
   grid-template-columns: repeat(10, 1fr);
-  grid-template-rows: repeat(6, 1fr);
-  width: 100vw;
-  height: 100vh;
-  gap: 0;
-  position: fixed;
+  grid-template-rows: repeat (6, 1fr);
+  gap: 2%;
 }
 
 /* Todos los bloques */
 .bloque {
+  aspect-ratio: 1/1;
   background-color: transparent;
   font-family: punk2, sans-serif;
   font-size: 2vh;
   padding: 0;
   margin: 0;
+  align-items: center;
   display: flex;
   gap: 0;
+}
+
+.bloque img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center;
 }
 
 /* Personaliza posición y estilo de cada cartel */
@@ -163,8 +190,8 @@
 .cartel1 img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
-  display: block;
+  object-fit: contain;
+  object-position: center;
 }
 
 .cartel2 {
@@ -176,8 +203,8 @@
 .cartel2 img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
-  display: block;
+  object-fit: contain;
+  object-position: center;
 }
 
 .cartel3 {
@@ -188,8 +215,8 @@
 .cartel3 img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
-  display: block;
+  object-fit: contain;
+  object-position: center;
 }
 
 .cartel4 {
@@ -197,24 +224,11 @@
   grid-row: 2 / 3;
   z-index: 1;
 }
-.cartel4 img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-}
-
 .cartel5 {
   grid-column: 8 / 9;
   grid-row: 2 / 3;
   z-index: 1;
   cursor: pointer;
-}
-.cartel5 img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
 }
 
 .cartel6 {
@@ -223,18 +237,12 @@
   z-index: 1;
   cursor: pointer;
 }
-.cartel6 img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-}
 #map {
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
+  top: 5%;
+  right: 0;
+  width: 90vw;
+  height: 95vh;
   z-index: 0;
 }
 
@@ -243,48 +251,21 @@
   grid-row: 1 / 2;
   z-index: 1;
 }
-.cartel7 img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-}
-
 .cartel8 {
   grid-column: 9 / 11;
   grid-row: 2 / 3;
   z-index: 1;
 }
-.cartel8 img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-}
-
 .cartel9 {
   grid-column: 1 / 2;
   grid-row: 3 / 4;
   z-index: 1;
   cursor: pointer;
 }
-.cartel9 img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-}
-
 .cartel10 {
   grid-column: 1 / 2;
   grid-row: 2 / 3;
   z-index: 1;
-}
-.cartel10 img {
-  width: 120%;
-  height: auto;
-  object-fit: cover;
-  display: block;
 }
 
 /* js */
@@ -298,6 +279,14 @@
 
 /* Responsive */
 @media screen and (max-width: 768px) {
+  .menu {
+    width: 100%;
+    height: auto;
+    position: relative;
+  }
+  .menu a {float: left;}
+  
+
   .grid-collage {
     grid-template-columns: repeat(6, 1fr); /* 2 columnas */
     grid-template-rows: repeat(8, 1fr);
@@ -373,7 +362,11 @@
   }
 }
 
-  /* Opcionalmente cambia orden o colapsa bloques aquí */
+@media screen and (max-width: 400px) {
+.menu a {
+  text-align: center;
+  float: none;
+}
 
-
+}
 

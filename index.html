@@ -15,22 +15,29 @@
 
     <div id="popinicio" class="popup">
         <div class ="popcontent">
-            <img src="assets/images/CARTEL1.png">
-            <img src="assets/images/stic.gif"> <br>
-             <div class="boton">
-                <img src="assets/images/flecha1.png">
-                <button onclick="cerrarpop()"> Comenzar el recorrido </button>
-            </div>
              <h2> Uso de Geolocalización</h2>
             <p> Este sitio utiliza la ubicación de tu dispositivo con fines artísticos y de investigación, <br>
                 no se recolectan datos personales, ni se comparte tu ubicación a terceros, <br> únicamente funciona 
                 para centrar el mapa y para registrar <br> la ubicación de los stickers colocados. <br>
-                Al continuar, aceptas el uso de tus datos de geolocalización con estos fines. <br> Si prefieres no compartirla, aún 
+                Al permitirlo, aceptas el uso de tus datos de geolocalización con estos fines. <br> Si prefieres no compartirla, aún 
                 puedes navegar por el sitio libremente.  
                 </p>
+            <div class="boton">
+                <img src="assets/images/flecha1.png">
+                <button onclick="cerrarpop()"> Entendido </button>
+            </div>
         </div>
     </div>
 
+
+    <div class = "menu">
+        <a href="#" onclick="opwin('ventana-info')"> Acerca de </a>
+        <a href="#" onclick="opwin('ventana-registro')">Registra tu sticker</a>
+        <a href="manual.html">Manual</a>     
+    </div>
+    <div class="textoexp">
+        lalalala
+    </div>
     <div id="ventana-registro" class="hidewin">
         <div class="barraup">
             <span>Registro de sticker</span>
@@ -40,8 +47,14 @@
             <p>Envía la ubicación del sticker a través de este botón y envíanos una imagen
                 a @violenciastransitorias en Instagram :)
             </p>
-            <p id="result">Esperando ...</p>
+            <label for="tiposticker"> Selecciona el tipo de sticker:</label>
+            <select id="tiposticker">
+                <option value=""> Selecciona una opción</option>
+                <option value="zona_acoso">Zona de acoso</option>
+                <option value="por_aqui">Espacios transitados</option>
+            </select>
             <button onclick="registrarubi()"> Mapea tu sticker </button>
+            <p id="result">Esperando ...</p>
         </div>
     </div>
 
@@ -70,56 +83,6 @@ La calle también es nuestra, tenemos derecho de habitarla.</p>
     </div>
     <div class="grid-collage">
           <div id="map"></div>
-        <div class="bloque cartel1">
-            <div id="sky3">
-                <img src="assets/images/sky3.jpg">
-            </div>
-        </div>
-        <div class="bloque cartel2">
-            <div id="poste">
-                <img src="assets/images/poste.gif">
-            </div>
-        </div>
-        <div class="bloque cartel3">
-             <div id="sky2">
-                <img src="assets/images/sky2.jpg">
-            </div>
-        </div>
-        <div class="bloque cartel4">
-            <div id="stick">
-                <img src="assets/images/deb2.png">
-            </div>
-        </div>
-        <div class="bloque cartel5" onclick="opwin('ventana-registro')">
-           <div id="registro">
-                <img src="assets/images/cartel2.png">
-            </div>
-        </div>
-        <div class="bloque cartel6" onclick="opwin('ventana-info')">
-            <div id="acerca">
-                <img src="assets/images/cartel3.png">
-            </div>
-        </div>
-        <div class="bloque cartel7">
-            <div id="sky1">
-                <img src="assets/images/sky1.png">
-            </div>
-        </div>
-        <div class="bloque cartel8">
-             <div id="fondo1">
-                <img src="assets/images/web1.png">
-            </div>
-        </div>
-        <div class="bloque cartel9" onclick="opwin('ventana-taller')">
-             <div id="talleres">
-                <img src="assets/images/cartel4.png">
-            </div>
-        </div>
-         <div class="bloque cartel10">
-             <div id="sticker">
-                <img src="assets/images/sticker1.png">
-            </div>
-        </div>
     </div>
 </body>
 </html>
