@@ -49,7 +49,7 @@ function initmap (center, showmarcador = false) {
   });
 
   map.on('load', function () {
-    map.loadImage('https://backend-vt.onrender.com/pasamos.png', function (error, image) {
+    map.loadImage('https://github.com/aogp1975/violenciastransitorias/blob/main/assets/images/icon1.png', function (error, image) {
       if (error) return console.error(error);
       map.addImage('pasamos', image);
 
