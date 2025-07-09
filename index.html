@@ -38,6 +38,10 @@
     <div class="textoexp">
         lalalala
     </div>
+    <div id="filtros">
+        <label><input type = "checkbox" checked onchange="toggleLayer('zona_acoso-layer', this.checked)">Zonas de acoso</label>
+        <label><input type = "checkbox" checked onchange="toggleLayer('por_aqui-layer', this.checked)">Espacios transitados</label>
+    </div>
     <div id="ventana-registro" class="hidewin">
         <div class="barraup">
             <span>Registro de sticker</span>
@@ -53,6 +57,22 @@
                 <option value="zona_acoso">Zona de acoso</option>
                 <option value="por_aqui">Espacios transitados</option>
             </select>
+            <div id="formtestimonio" class="hideifwin">
+                <label>¿Qué sucedió?</label>
+                <textarea id="q_uno"></textarea>
+
+                <label>¿Qué hora era?</label>
+                <input type="text" id="q_dos" />
+
+                <label>¿Qué sentiste?</label>
+                <textarea id="q_tres"></textarea>
+
+                <label>¿Cambiaste rutinas, vestimenta, rutas, etc a partir de esta experiencia?</label>
+                <textarea id="q_cuatro"></textarea>
+
+                <label>¿Cómo te sientes en el espacio público?</label>
+                <textarea id="q_cinco"></textarea>
+            </div>
             <button onclick="registrarubi()"> Mapea tu sticker </button>
             <p id="result">Esperando ...</p>
         </div>

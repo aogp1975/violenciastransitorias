@@ -3,6 +3,11 @@ window.addEventListener("DOMContentLoaded", function () {
   popupin.style.display = "flex";
 });
 
+function toggleLayer (layerId, visible) {
+  const visibility = visible ? 'visible' : 'none';
+  map.setLayoutProperty(layerId, 'visibility', visibility);
+}
+
 function cerrarpop() {
   const popupin = document.getElementById('popinicio');
   popupin.style.display = 'none';
@@ -49,9 +54,14 @@ function initmap (center, showmarcador = false) {
   });
 
   map.on('load', function () {
-    map.loadImage('assets/images/icon1.png', function (error, image) {
+    map.loadImage('assets/images/icon1.png', function (error, imagepas) {
       if (error) return console.error(error);
-      map.addImage('pasamos', image);
+      map.addImage('pasamos', imagepas);
+    
+    map.loadImage('assets/images/acoso.png', function (error, imageacos){
+      if (error) return console.error(error);
+      map.addImage('acoso', imageacos);
+    
 
       fetch('https://backend-vt.onrender.com/stickers.geojson')
         .then(res => res.json())
@@ -62,31 +72,45 @@ function initmap (center, showmarcador = false) {
           });
 
           map.addLayer({
-            id: 'stickers-layer',
+            id: 'zona_acoso-layer',
             type: 'symbol',
             source: 'stickers',
+            filter: ['==', ['get', 'tipo'], 'zona_acoso'],
             layout: {
-              'icon-image': 'pasamos',
-              'icon-size': 0.07
+              'icon-image': 'acoso',
+              'icon-size': 0.05
             }
           });
 
-          map.on('click', 'stickers-layer', (e) => {
-            const coords = e.features[0].geometry.coordinates.slice();
-            const props = e.features[0].properties;
-            const imagen = props.imagen;
+          map.addLayer({
+            id: 'por_aqui-layer',
+            type: 'symbol',
+            source: 'stickers',
+            filter: ['==', ['get', 'tipo'], 'por_aqui'],
+            layout: {
+              'icon-image': 'pasamos',
+              'icon-size': 0.05
+            }
+          });
 
-            const contenido = imagen
-            ? `<img src="${imagen}" style="width: 150px; height: auto;">`
-            : 'Sin imagen disponible';
+          ['zona_acoso-layer', 'por_aqui-layer'].forEach(layerId => {
+            map.on('click', layerId, (e) => {
+              const coords = e.features [0].geometry.coordinates.slice();
+              const imagen = e.features [0].properties.imagen;
 
-            new mapboxgl.Popup()
-            .setLngLat(coords)
-            .setHTML(contenido)
-            .addTo(map);
+              const contenido = imagen 
+              ? `<img src="${imagen}" style = "width: 150 px;">`
+              : 'Sin imagen';
+
+              new mapboxgl.Popup()
+                .setLngLat(coords)
+                .setHTML(contenido)
+                .addTo(map);
+            });
           });
         });
     });
+  });
 
     if (showmarcador) {
       new mapboxgl.Marker({ color: '#02fb54' })

@@ -33,6 +33,11 @@
 }
 
 
+#filtros {
+  z-index: 10000;
+  left: 50%;
+  top: 50%;
+}
 .popup {
   position: fixed;
   top: 0;
