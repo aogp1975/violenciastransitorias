@@ -32,12 +32,21 @@
   color: white;
 }
 
-
-#filtros {
-  z-index: 10000;
+.filtro-stickers {
+  position: absolute;
+  display: flex;
+  background: purple;
+  gap: 1em;
+  z-index: 1000;
   left: 50%;
   top: 50%;
 }
+.filtro-stickers label {
+  display: block;
+  margin-bottom: 6px;
+  cursor: pointer;
+}
+
 .popup {
   position: fixed;
   top: 0;

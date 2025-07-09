@@ -38,10 +38,11 @@
     <div class="textoexp">
         lalalala
     </div>
-    <div id="filtros">
-        <label><input type = "checkbox" checked onchange="toggleLayer('zona_acoso-layer', this.checked)">Zonas de acoso</label>
-        <label><input type = "checkbox" checked onchange="toggleLayer('por_aqui-layer', this.checked)">Espacios transitados</label>
+    <div class="filtro-stickers">
+        <label><input type = "checkbox" id="filtro_acoso" checked> Zonas de acoso </label>
+        <label><input type = "checkbox" id="filtro_pasamos" checked> Estamos aquí </label>
     </div>
+
     <div id="ventana-registro" class="hidewin">
         <div class="barraup">
             <span>Registro de sticker</span>
@@ -57,7 +58,7 @@
                 <option value="zona_acoso">Zona de acoso</option>
                 <option value="por_aqui">Espacios transitados</option>
             </select>
-            <div id="formtestimonio" class="hideifwin">
+            <div id="formtestimonio" class="hidewin">
                 <label>¿Qué sucedió?</label>
                 <textarea id="q_uno"></textarea>
 

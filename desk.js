@@ -3,10 +3,17 @@ window.addEventListener("DOMContentLoaded", function () {
   popupin.style.display = "flex";
 });
 
-function toggleLayer (layerId, visible) {
-  const visibility = visible ? 'visible' : 'none';
-  map.setLayoutProperty(layerId, 'visibility', visibility);
-}
+document.getElementById("tiposticker").addEventListener("change", function () {
+  const tipo = this.value;
+  const form = document.getElementById("formtestimonio");
+  if (tipo === "zona_acoso") {
+    form.classList.remove("hidewin");
+  } else {
+    form.classList.add("hidewin");
+  }
+});
+
+
 
 function cerrarpop() {
   const popupin = document.getElementById('popinicio');
@@ -26,6 +33,18 @@ function registrarubi() {
       const lon = pos.coords.longitude;
       const tipo = document.getElementById("tiposticker").value;
 
+      let testimonio = null;
+      if (tipo === 'zona_acoso') {
+        testimonio = {
+          q_sucedio: document.getElementById("q_uno").value,
+          q_hora: document.getElementById("q_dos").value,
+          q_sent: document.getElementById("q_tres").value,
+          q_cambios: document.getElementById("q_cuatro").value,
+          q_espacio: document.getElementById("q_cinco").value
+        };
+      }
+  
+
       document.getElementById("result").innerText = `Ubicación registrada`;
 
       fetch("https://backend-vt.onrender.com/guardar_ubi", {
@@ -34,7 +53,8 @@ function registrarubi() {
         body: JSON.stringify({ 
           latitud: lat, 
           longitud: lon,
-          tipo: tipo
+          tipo: tipo,
+          testimonio: testimonio
         })
       });
     });
@@ -92,15 +112,28 @@ function initmap (center, showmarcador = false) {
               'icon-size': 0.05
             }
           });
+          
+          appfiltro(map);
+
+          document.getElementById('filtro_acoso').addEventListener('change', () => appfiltro(map));
+          document.getElementById('filtro_pasamos').addEventListener('change', () => appfiltro(map));
 
           ['zona_acoso-layer', 'por_aqui-layer'].forEach(layerId => {
             map.on('click', layerId, (e) => {
               const coords = e.features [0].geometry.coordinates.slice();
-              const imagen = e.features [0].properties.imagen;
+              const props = e.features[0].properties;
 
-              const contenido = imagen 
-              ? `<img src="${imagen}" style = "width: 150 px;">`
-              : 'Sin imagen';
+              let contenido = ''; 
+              if (props.tipo === 'zona_acoso' && props.testimonio) {
+                contenido =`
+                  <strong>¿Qué sucedió?</strong><br>${props.testimonio.q_sucedio}<br><br>
+                  <strong>¿Qué hora era?</strong><br>${props.testimonio.q_hora}<br><br>
+                  <strong>¿Qué sentiste?</strong><br>${props.testimonio.q_sent}<br><br>
+                  <strong>¿Cambiaste tus rutinas, rutas, vestimenta, etc?</strong><br>${props.testimonio.q_cambios}<br><br>
+                  <strong>¿Cómo te sientes en el espacio público?</strong><br>${props.testimonio.q_espacio}`;
+              } else {
+                contenido = 'Sticker colocado, aquí también pasamos. Visita el repositorio visual en Instagram @violenciastransitorias';
+              }
 
               new mapboxgl.Popup()
                 .setLngLat(coords)
@@ -137,5 +170,13 @@ navigator.geolocation.getCurrentPosition(
     initmap(ubidef, false);
   }
 );
+
+function appfiltro(map) {
+  const mostraracos = document.getElementById('filtro_acoso').checked;
+  const mostrarpas = document.getElementById('filtro_pasamos').checked;
+
+  map.setLayoutProperty('zona_acoso-layer', 'visibility', mostraracos ? 'visible' : 'none');
+  map.setLayoutProperty('por_aqui-layer', 'visibility', mostrarpas ? 'visible' : 'none');
+}
   
 
