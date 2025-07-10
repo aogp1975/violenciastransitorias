@@ -12,34 +12,89 @@
 }
 
 .menu {
+  border-radius: 25px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   margin: 0;
   padding: 0;
-  width: 10vw;
-  background-color: aqua;
+  width: 16vw;
+  background-color: #f8447a;
   position: fixed;
-  height: 100%;
+  top: 8.5%;
+  height: 90%;
   overflow: auto;
   z-index: 2;
+}
+.menu a img {
+  display: block;
+  left: 2vh;
+  margin: 0;
+  padding: 0;
 }
 .menu a {
   display: block;
   color: black;
-  padding: 16px;
+  padding: 0;
+  margin: 2vh 0;
+  width: auto;
+  height: auto;
   text-decoration: none;
 }
 .menu a:hover {
-  background-color: purple;
+  background-color: #6c135b;
   color: white;
 }
 
 .filtro-stickers {
   position: absolute;
   display: flex;
-  background: purple;
+  font-family: bluescreen, sans-serif;
+  background: transparent;
+  justify-content: center;
   gap: 1em;
-  z-index: 1000;
-  left: 50%;
-  top: 50%;
+  margin: 2vh auto;
+  z-index: 3;
+  left: 80%;
+  top: 20%;
+}
+.filtro-stickers .tile {
+  position: relative;
+  cursor: pointer;
+  font-family: bluescreen, sans-serif;
+  font-size: 2vh;
+  border: 2px solid black;
+  padding: 1vh 2vh;
+  border-radius: 8px;
+  background: white;
+  user-select: none;
+  transition: all 0.3 ease;
+  box-shadow: 2px 2px 0 black;
+  overflow: hidden;
+}
+.filtro-stickers .tile input {
+  display: none;
+}
+.filtro-stickers .tile span {
+  display: inline-block;
+  pointer-events: none;
+}
+.filtro-stickers .tile span img {
+  width: auto;
+  height: 10vh;
+  object-fit: contain;
+  filter: grayscale(1) opacity (1);
+  transition: 0.3s;
+}
+.filtro-stickers .tile input:checked + span {
+  background-color: purple;
+  color: white;
+  padding: 1vh 2vh;
+  border-radius: 6px;
+}
+.filtro-stickers .tile input:checked + span img {
+  filter: none;
 }
 .filtro-stickers label {
   display: block;
@@ -47,6 +102,46 @@
   cursor: pointer;
 }
 
+.textoexp {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: black;
+  color:#f8447a;
+  font-family: bluescreen, sans-serif;
+  font-size: 2.5vh;
+  white-space: nowrap;
+  overflow: hidden;
+  z-index: 3;
+}
+.textoexp p {
+  display: inline-block;
+  padding-left: 100%;
+  animation: textoexp 40s linear infinite;
+}
+@keyframes textoexp {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+.imagendeco img {
+  position:absolute;
+  left: 15%;
+  z-index: 1;
+}
+.titulo img {
+  position: absolute;
+  left: 0%;
+  top: -8%;
+  z-index: 4;
+  height: 40vh;
+  pointer-events: none;
+}
 .popup {
   position: fixed;
   top: 0;
@@ -60,7 +155,7 @@
   z-index: 10;
 }
 .popcontent {
-  background-image: url(assets/images/muro1.jpg);
+  background-image: url(assets/images/papel.jpeg);
   background-size: contain;
   padding: 4vh;
   text-align: center;
@@ -73,16 +168,16 @@
   font-size: 6vh;
   margin-bottom: 2vh;
   color: rgb(221, 39, 194);
-  background-color: black;
+  background-color: transparent;
 }
 .popcontent p {
   font-size: 2.5 vh;
-  color: white;
+  color: black;
   margin-bottom: 2vh;
-  background-color: blueviolet;
+  background-color: transparent;
 }
 .popcontent img{
-  height: 60vh;
+  height: 40vh;
   width: auto;
 }
 .boton {
@@ -90,7 +185,7 @@
   width: 100%;
 }
 .boton img {
-  width: 50%;
+  width: 40%;
   height: auto;
 }
 .boton button {
@@ -99,12 +194,12 @@
   left: 48%;
   transform: translate(-50%, -50%);
   -ms-transform: translate(-50%, -50%);
-  margin-top: 2vh;
+  margin-top: 1vh;
   padding: 1vh 2vh;
-  font-family: punktype;
+  font-family: bluescreen, sans-serif;
   font-size: 7vh;
   background-color: transparent;
-  color: black;
+  color: white;
   border: none;
   text-align: center;
   cursor: pointer;
@@ -136,12 +231,18 @@
   resize: both;
   overflow: auto;
 }
+#formtestimonio {
+  font-family: bluescreen, sans-serif;
+  font-size: 2.5vh;
+}
+
+
 #ventana-info {
   position: absolute;
-  top: 50%;
-  left: 50%;
-  height: 30vh;
-  width: 30vw;
+  top: 40%;
+  left: 40%;
+  height: 40vh;
+  width: 40vw;
   background: white;
   border: 2px solid black;
   z-index: 20;
@@ -151,6 +252,7 @@
 }
 .barraup {
   position:sticky;
+  top: 0;
   font-family: bluescreen;
   background: rgb(133, 9, 133);
   color: whitesmoke;
@@ -195,62 +297,7 @@
   object-position: center;
 }
 
-/* Personaliza posición y estilo de cada cartel */
-.cartel1 {
-  grid-column: 10;
-  grid-row: 1/2;
-  z-index: 1;
-}
-.cartel1 img {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-  object-position: center;
-}
 
-.cartel2 {
-  grid-column: 1 / 2;
-  grid-row: 1 / 2;
-  padding: 0;
-  z-index: 1;
-}
-.cartel2 img {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-  object-position: center;
-}
-
-.cartel3 {
-  grid-column: 9 / 10;
-  grid-row: 1 / 1;
-  z-index: 1;
-}
-.cartel3 img {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-  object-position: center;
-}
-
-.cartel4 {
-  grid-column: 2 / 3;
-  grid-row: 2 / 3;
-  z-index: 1;
-}
-.cartel5 {
-  grid-column: 8 / 9;
-  grid-row: 2 / 3;
-  z-index: 1;
-  cursor: pointer;
-}
-
-.cartel6 {
-  grid-column: 9 / 10;
-  grid-row: 3 / 4;
-  z-index: 1;
-  cursor: pointer;
-}
 #map {
   position: absolute;
   top: 5%;
@@ -260,27 +307,6 @@
   z-index: 0;
 }
 
-.cartel7 {
-  grid-column: 2 / 3;
-  grid-row: 1 / 2;
-  z-index: 1;
-}
-.cartel8 {
-  grid-column: 9 / 11;
-  grid-row: 2 / 3;
-  z-index: 1;
-}
-.cartel9 {
-  grid-column: 1 / 2;
-  grid-row: 3 / 4;
-  z-index: 1;
-  cursor: pointer;
-}
-.cartel10 {
-  grid-column: 1 / 2;
-  grid-row: 2 / 3;
-  z-index: 1;
-}
 
 /* js */
 .mapboxgl-popup.popmark .mapboxgl-popup-content {

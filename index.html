@@ -20,27 +20,45 @@
                 no se recolectan datos personales, ni se comparte tu ubicación a terceros, <br> únicamente funciona 
                 para centrar el mapa y para registrar <br> la ubicación de los stickers colocados. <br>
                 Al permitirlo, aceptas el uso de tus datos de geolocalización con estos fines. <br> Si prefieres no compartirla, aún 
-                puedes navegar por el sitio libremente.  
+                puedes navegar por el sitio libremente. <br> No se recolectan datos personales ni de origen privado.
                 </p>
             <div class="boton">
-                <img src="assets/images/flecha1.png">
-                <button onclick="cerrarpop()"> Entendido </button>
+                <img src="assets/images/flecha2.png">
+                <button onclick="cerrarpop()"> Acepto </button>
             </div>
         </div>
     </div>
 
 
     <div class = "menu">
-        <a href="#" onclick="opwin('ventana-info')"> Acerca de </a>
-        <a href="#" onclick="opwin('ventana-registro')">Registra tu sticker</a>
-        <a href="manual.html">Manual</a>     
+        <a href="#" onclick="opwin('ventana-info')"> <img src="assets/images/acde.png" style="height: 8vh;"> </a>
+        <a href="#" onclick="opwin('ventana-registro')"> <img src="assets/images/regstc.png" style="height: 16vh;"> </a>
+        <a href="manual.html"> <img src="assets/images/guiadebn.png" style="height: 28vh;"> </a>     
     </div>
     <div class="textoexp">
-        lalalala
+        <p> Estoy llena de rabia, - de asco, de miedo. - Estoy incómoda, insegura. - Pero estoy aquí. - Estamos aquí. - Nuestro cuerpo no es una posesión pública. - No estamos relegadas a lo privado. - No seremos desplazadas. - El espacio público se ha deteriorado. - La calle se volvió hostil. - Y aún así la habitamos, - la transitamos, la recorremos, la sufrimos. - Pero la vamos a recuperar. - La vamos a tomar. - Resistir es un acto cotidiano. - Reclamo la calle. - Defiende tu espacio. - Nosotras estamos aquí. - La calle es nuestra.</p>
+    </div>
+    <div class = "titulo">
+        <img src="assets/images/lllviolemc.png">
     </div>
     <div class="filtro-stickers">
-        <label><input type = "checkbox" id="filtro_acoso" checked> Zonas de acoso </label>
-        <label><input type = "checkbox" id="filtro_pasamos" checked> Estamos aquí </label>
+        <label class="tile">
+            <input type = "checkbox" id="filtro_acoso" checked> <span> 
+                <img src="assets/images/acoso.png">
+                Zonas de <br> acoso 
+            </span>
+        </label>
+        <label class="tile">
+            <input type = "checkbox" id="filtro_pasamos" checked> 
+            <span> 
+            <img src="assets/images/icon1.png">
+             Estamos aquí 
+            </span>
+        </label>
+    </div>
+
+    <div class="imagendeco">
+        <img src="assets/images/poste.png">
     </div>
 
     <div id="ventana-registro" class="hidewin">
@@ -59,19 +77,19 @@
                 <option value="por_aqui">Espacios transitados</option>
             </select>
             <div id="formtestimonio" class="hidewin">
-                <label>¿Qué sucedió?</label>
-                <textarea id="q_uno"></textarea>
+                <label>¿Qué sucedió?</label> <br>
+                <textarea id="q_uno"></textarea> <br>
 
-                <label>¿Qué hora era?</label>
-                <input type="text" id="q_dos" />
+                <label>¿Qué hora era?</label> <br>
+                <input type="text" id="q_dos" /> <br>
 
-                <label>¿Qué sentiste?</label>
-                <textarea id="q_tres"></textarea>
+                <label>¿Qué sentiste?</label><br>
+                <textarea id="q_tres"></textarea><br>
 
-                <label>¿Cambiaste rutinas, vestimenta, rutas, etc a partir de esta experiencia?</label>
-                <textarea id="q_cuatro"></textarea>
+                <label>¿Cambiaste rutinas, vestimenta, rutas, etc a partir de esta experiencia?</label><br>
+                <textarea id="q_cuatro"></textarea><br>
 
-                <label>¿Cómo te sientes en el espacio público?</label>
+                <label>¿Cómo te sientes en el espacio público?</label><br>
                 <textarea id="q_cinco"></textarea>
             </div>
             <button onclick="registrarubi()"> Mapea tu sticker </button>
@@ -85,10 +103,11 @@
             <button onclick ="cerrarwin('ventana-info')">X</button>
         </div>
         <div class="wincontent">
-            <p>Violencias transitorias es un proyecto de intervención y apropiación del espacio público con el acoso callejero como motivo de acción. Buscamos recuperar las calles y marcarlas a través de stickers, alzar nuestra voz y nombrar las agresiones.
-Este mapa es un espacio para denunciar, actuar y expandir la colaboración.
-La calle también es nuestra, tenemos derecho de habitarla.</p>
-            <a href="talleres.html">Talleres</a>
+            <p>Violencias Transitorias es una intervención artística que explora la experiencia del acoso callejero hacia las mujeres y cómo estas agresiones transforman nuestra percepción y uso del espacio público. Esta obra nace de una sensación de incomodidad, de miedo y de rabia. Surge como respuesta a una urgencia personal, pero también, colectiva: la necesidad de reconocernos en la calle, de resistir a la normalización de las violencias que sufrimos y de transformar el entorno que nos rodea. <br>
+Este proyecto está compuesto de una cartografía alojada en un sitio web, una guía para realizar caminatas colectivas y una activación de la calle por medio de stickers, los cuales permiten marcar puntos en donde fuimos agredidas y aquellos que recorremos cotidianamente. A través de códigos QR se enlazan los espacios físicos con el mapa digital generando una herramienta colaborativa de denuncia y memoria. <br>
+La obra invita a intervenir el territorio desde quien lo habita a través del intercambio de experiencias, de caminatas y de stickers. Propone una forma de resignificar los espacios que nos han sido hostiles, de señalarlos y reapropiárnoslos simbólicamente; una práctica de denuncia, de tejer redes y de posicionarnos políticamente en los espacios que habitamos, de decir estoy aquí. <br>
+Porque lo personal es político, y la calle también.
+</p>
         </div>
     </div>
 
