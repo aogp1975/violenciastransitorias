@@ -29,7 +29,6 @@
 }
 .menu a img {
   display: block;
-  left: 2vh;
   margin: 0;
   padding: 0;
 }
@@ -45,6 +44,15 @@
 .menu a:hover {
   background-color: #6c135b;
   color: white;
+}
+#imginfo {
+  height: 8vh;
+}
+#imgreg {
+  height: 16vh;
+}
+#imgman {
+  height: 28vh;
 }
 
 .filtro-stickers {
@@ -318,14 +326,53 @@
 
 
 /* Responsive */
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 400px) {
+  #map {
+    position: relative;
+    width: 100%;
+    height: 60vh;
+    top: auto;
+    right: auto;
+  }
   .menu {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    gap: 1em;
+    position: fixed;
+    top: 0;
+    left: 0;
     width: 100%;
     height: auto;
-    position: relative;
+    padding: 0.5em 0;
+    z-index: 3;
   }
-  .menu a {float: left;}
-  
+  .menu a img{
+  height: 2vh;
+  width: auto;
+}
+
+.tile {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0.5em;
+  border-radius: 8px;
+  cursor:pointer;
+  max-width: 120px;
+}
+.tile img {
+  width: 40px;
+  height: 40px;
+  margin-bottom: 0.25em;
+}
+.tile input {
+  display: none;
+}
+.tile input:checked + img {
+  filter: brightness(1.2);
+  border: 2px solid purple;
+}
 
   .grid-collage {
     grid-template-columns: repeat(6, 1fr); /* 2 columnas */
@@ -375,10 +422,15 @@
   }
 
   .barraup {
+    position: sticky;
+    top: 0;
+    z-index: 10;
     font-size: 2vh;
   }
 
   .wincontent {
+    max-height: calc(100%-50px);
+    overflow-y:auto;
     font-size: 1.5vh;
   }
 
@@ -402,11 +454,5 @@
   }
 }
 
-@media screen and (max-width: 400px) {
-.menu a {
-  text-align: center;
-  float: none;
-}
 
-}
 

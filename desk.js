@@ -51,15 +51,35 @@ function registrarubi() {
         method: 'POST',
         headers: {'Content-Type': 'application/json' },
         body: JSON.stringify({ 
-          latitud: lat, 
-          longitud: lon,
-          tipo: tipo,
+          lat: lat, 
+          lng: lon,
+          type: tipo,
           testimonio: testimonio
         })
+      })
+      .then(res => res.json())
+      .then(() => {
+        const mapSource = map.getSource('stickers');
+        if (mapSource) {
+            fetch('https://backend-vt.onrender.com/creageojson')
+              .then(res = res.json())
+              .then(data => {
+                mapSource.setData(data);
+              });
+          }
+        })
+        .catch(error => {
+          console.error("Error al registrar ubicación:", error);
+        });
+      }, function(error) {
+        console.error("Error obt geolocali:", error);
       });
-    });
+    } else {
+      alert("fgeo no disponible");
+    }
   }
-}
+
+
 
 mapboxgl.accessToken = 'pk.eyJ1IjoiYW9ncDE5NzUiLCJhIjoiY2wxa3pjb3l2MDVyMTNpb2IyamE2MDd6aiJ9.KPEZMDwX23m8T1kv00Df_g';
 
@@ -83,7 +103,7 @@ function initmap (center, showmarcador = false) {
       map.addImage('acoso', imageacos);
     
 
-      fetch('https://backend-vt.onrender.com/stickers.geojson')
+      fetch('https://backend-vt.onrender.com/creageojson')
         .then(res => res.json())
         .then(data => {
           map.addSource('stickers', {
