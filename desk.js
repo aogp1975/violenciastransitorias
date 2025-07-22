@@ -62,7 +62,7 @@ function registrarubi() {
         const mapSource = map.getSource('stickers');
         if (mapSource) {
             fetch('https://backend-vt.onrender.com/creageojson')
-              .then(res = res.json())
+              .then(res => res.json())
               .then(data => {
                 mapSource.setData(data);
               });
