@@ -326,44 +326,107 @@
 
 
 /* Responsive */
-@media screen and (max-width: 400px) {
+@media screen and (max-width: 768px) {
   #map {
-    position: relative;
-    width: 100%;
-    height: 60vh;
-    top: auto;
-    right: auto;
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    z-index: 0;
   }
   .menu {
     display: flex;
+    flex-direction: row;
     justify-content: space-around;
     align-items: center;
-    gap: 1em;
     position: fixed;
-    top: 0;
+    top: 8vh;
     left: 0;
     width: 100%;
-    height: auto;
+    height: 8vh;
     padding: 0.5em 0;
     z-index: 3;
   }
-  .menu a img{
-  height: 2vh;
+  .menu a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 0.5 em;
+    height: 100%;
+  }
+  .menu a img {
+    align-items: center;
+    justify-content: center;
+  }
+  #imginfo img {
+    height: 4vh;
+  }
+  #imgreg img {
+    height: 8vh;
+  }
+  #imgman img {
+    height: 14vh;
+  }
+
+.titulo img {
+  position: fixed;
+  top: -1em;
+  padding: 0;
+  margin: 0;
+  left: 1em;
+  height: 15vh;
   width: auto;
+  z-index: 4;
+  pointer-events: none;
+}
+.imagendeco img {
+  position:fixed;
+  bottom: 0.5em;
+  left: -2em;
+  height: 40vh;
+  width: auto;
+  z-index: 1;
+  margin: 0;
+  padding: 0;
 }
 
+.filtro-stickers {
+  position: fixed;
+  top: 20vh;
+  left: 10%;
+  font-size: 0.3vh;
+  border-radius: 1vh;
+  z-index: 8;
+  display: flex;
+  flex-wrap: wrap;
+}
 .tile {
   display: inline-flex;
   flex-direction: column;
   align-items: center;
-  padding: 0.5em;
-  border-radius: 8px;
+  padding: 0.2em;
+  border-radius: 1vh;
   cursor:pointer;
-  max-width: 120px;
+  max-width: 8vh;
+}
+.filtro-stickers .tile {
+  position: relative;
+  cursor: pointer;
+  font-family: bluescreen, sans-serif;
+  font-size: 1vh;
+  border: 2px solid black;
+  padding: 0;
+  border-radius: 1vh;
+  background: white;
+  user-select: none;
+  transition: all 0.3 ease;
+  box-shadow: 2px 2px 0 black;
+  overflow: hidden;
 }
 .tile img {
-  width: 40px;
-  height: 40px;
+  width: 2vh;
+  height: 2vh;
   margin-bottom: 0.25em;
 }
 .tile input {
@@ -372,6 +435,12 @@
 .tile input:checked + img {
   filter: brightness(1.2);
   border: 2px solid purple;
+}
+.filtro-stickers .tile span img {
+  height: 4vh;
+  word-wrap: break-word;
+  line-height: 1.2;
+  align-content: center;
 }
 
   .grid-collage {
@@ -452,6 +521,53 @@
     width: 100%;
     height: auto;
   }
+}
+
+
+#ventana-taller {
+  position: absolute;
+  top: 70%;
+  left: 10%;
+  height: 30vh;
+  width: 50vw;
+  background: white;
+  border: 2px solid black;
+  z-index: 20;
+  box-shadow: 0 0 10 px rgba(0,0,0,0.5);
+  resize: both;
+  overflow: auto;
+}
+#ventana-registro {
+  position: absolute;
+  top: 25%;
+  left: 40%;
+  height: 30vh;
+  width: 40vw;
+  background: white;
+  border: 2px solid black;
+  z-index: 20;
+  box-shadow: 0 0 10 px rgba(0,0,0,0.5);
+  resize: both;
+  overflow: auto;
+}
+#formtestimonio {
+  font-family: bluescreen, sans-serif;
+  font-size: 1vh;
+}
+
+
+#ventana-info {
+  position: absolute;
+  top: 40%;
+  left: 40%;
+  height: 40vh;
+  width: 60vw;
+  background: white;
+  border: 2px solid black;
+  z-index: 20;
+  box-shadow: 0 0 10 px rgba(0,0,0,0.5);
+  resize: both;
+  overflow: auto;
 }
 
 

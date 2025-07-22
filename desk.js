@@ -57,27 +57,24 @@ function registrarubi() {
           testimonio: testimonio
         })
       })
-      .then(res => res.json())
-      .then(() => {
-        const mapSource = map.getSource('stickers');
-        if (mapSource) {
-            fetch('https://backend-vt.onrender.com/creageojson')
-              .then(res => res.json())
-              .then(data => {
-                mapSource.setData(data);
-              });
-          }
-        })
-        .catch(error => {
-          console.error("Error al registrar ubicación:", error);
-        });
-      }, function(error) {
-        console.error("Error obt geolocali:", error);
-      });
-    } else {
-      alert("fgeo no disponible");
-    }
-  }
+      .then(res => {
+        if (!res.ok) {
+          throw new Error("Error en la solicitud al backend");
+        }
+        return res.json();
+    })
+    .then(data => {
+      console.log("punto registrado:", data);
+    })
+    .catch(err => {
+      console.error("Error al registrar", err);
+      document.getElementById("result").innerText= `Hubo un error`;
+    });
+  }); 
+} else {
+  document.getElementById("result").innerText = "La feo no es coms";
+}
+}
 
 
 
