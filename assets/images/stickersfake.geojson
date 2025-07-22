@@ -1,0 +1,69 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-99.5115, 19.2888]
+      },
+      "properties": {
+        "tipo": "por_aqui"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-99.5108, 19.2891]
+      },
+      "properties": {
+        "tipo": "por_aqui"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-99.5100, 19.2895]
+      },
+      "properties": {
+        "tipo": "zona_acoso",
+        "testimonio": {
+          "q_sucedio": "Un hombre me siguió por varias cuadras.",
+          "q_hora": "18:30",
+          "q_sent": "Tuve mucho miedo.",
+          "q_cambios": "Dejé de pasar por esta calle sola.",
+          "q_espacio": "Me siento insegura en estas zonas poco iluminadas."
+        }
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-99.5092, 19.2898]
+      },
+      "properties": {
+        "tipo": "por_aqui"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-99.5085, 19.2901]
+      },
+      "properties": {
+        "tipo": "zona_acoso",
+        "testimonio": {
+          "q_sucedio": "Un coche se detuvo y me gritaron cosas.",
+          "q_hora": "20:00",
+          "q_sent": "Me dio coraje y tristeza.",
+          "q_cambios": "Trato de evitar pasar por aquí de noche.",
+          "q_espacio": "Es una zona donde pasan pocos peatones, eso la hace vulnerable."
+        }
+      }
+    }
+  ]
+}
