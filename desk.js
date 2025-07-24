@@ -142,15 +142,23 @@ function initmap (center, showmarcador = false) {
 
               let contenido = ''; 
               if (props.tipo === 'zona_acoso' && props.testimonio) {
+                let t;
+                try {
+                  t= typeof props.testimonio === 'string' ? JSON.parse(props.testimonio) : props.testimonio;
+                } catch (e) {
+                  t = null;
+                }
+                if (t) {
                 contenido =`
-                  <strong>¿Qué sucedió?</strong><br>${props.testimonio.q_sucedio}<br><br>
-                  <strong>¿Qué hora era?</strong><br>${props.testimonio.q_hora}<br><br>
-                  <strong>¿Qué sentiste?</strong><br>${props.testimonio.q_sent}<br><br>
-                  <strong>¿Cambiaste tus rutinas, rutas, vestimenta, etc?</strong><br>${props.testimonio.q_cambios}<br><br>
-                  <strong>¿Cómo te sientes en el espacio público?</strong><br>${props.testimonio.q_espacio}`;
+                  <strong>¿Qué sucedió?</strong><br>${t.q_sucedio}<br><br>
+                  <strong>¿Qué hora era?</strong><br>${t.q_hora}<br><br>
+                  <strong>¿Qué sentiste?</strong><br>${t.q_sent}<br><br>
+                  <strong>¿Cambiaste tus rutinas, rutas, vestimenta, etc?</strong><br>${t.q_cambios}<br><br>
+                  <strong>¿Cómo te sientes en el espacio público?</strong><br>${t.q_espacio}`;
               } else {
                 contenido = 'Sticker colocado, aquí también pasamos. Visita el repositorio visual en Instagram @violenciastransitorias';
               }
+            }
 
               new mapboxgl.Popup()
                 .setLngLat(coords)
