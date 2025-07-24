@@ -100,7 +100,7 @@ function initmap (center, showmarcador = false) {
       map.addImage('acoso', imageacos);
     
 
-      fetch('assets/images/stickersfake.geojson')
+      fetch('https://backend-vt.onrender.com/creageojson')
         .then(res => res.json())
         .then(data => {
           map.addSource('stickers', {
