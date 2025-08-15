@@ -1,21 +1,159 @@
 <!DOCTYPE html>
 <html lang="es">
-<head>
+    <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
-    <title>Espacio recuperado</title>
-    <link rel="stylesheet" href="stmanual.css">
+    <title>Violencias transitorias</title>
+    <link href="https://api.mapbox.com/mapbox-gl-js/v2.5.0/mapbox-gl.css" rel="stylesheet">
+    <script src="https://api.mapbox.com/mapbox-gl-js/v2.5.0/mapbox-gl.js"></script>
+    <link rel="stylesheet" href="desk.css">
 </head>
 <body>
-<div class="containall">
-<div class="menupr">
-    <button class="menubt" onclick="abmenu()"> ★★★ </button>
-    <div class="contmenu">
-    <a href="index.html"> ★Principal </a>
-    <a href="mapa.html">Mapa★</a>
-    <a href="acerca.html">★Acerca</a>
-    <a href="manual.html">Participa★</a>
+    <div class="textoexp">
+        <p> Estoy llena de rabia, - de asco, de miedo. - Estoy incómoda, insegura. - Pero estoy aquí. - Estamos aquí. - Nuestro cuerpo no es una posesión pública. - No estamos relegadas a lo privado. - No seremos desplazadas. - El espacio público se ha deteriorado. - La calle se volvió hostil. - Y aún así la habitamos, - la transitamos, la recorremos, la sufrimos. - Pero la vamos a recuperar. - La vamos a tomar. - Resistir es un acto cotidiano. - Reclamo la calle. - Defiende tu espacio. - Nosotras estamos aquí. - La calle es nuestra.</p>
     </div>
-</div>
-</div>
+    <div class = "titulo">
+        <a id ="imgmap" href="index.html"> <img src="assets/images/lllviolemc.png"> </a>
+    </div>
+
+<section class="descargas-vt">
+  <h2>📥 Herramientas para la Acción Colectiva</h2>
+  <p class="intro">
+    En esta sección puedes descargar la <strong>Guía para Caminatas Colectivas, Tácticas de resistencia cotidiana</strong> 
+    y las <strong>Plantillas para imprimir stickers</strong> de <em>Violencias Transitorias</em>. 
+  </p>
+
+  <!-- GUÍA -->
+  <div class="item">
+    <img src="assets/images/manualpreview.png" alt="Vista previa de la guía" class="preview">
+    <div class="text">
+      <h3>📖 Guía para Caminatas Colectivas, Tácticas de resistencia cotidiana</h3>
+      <p>Organiza caminatas colectivas, con pasos claros, recomendaciones e instructivo para el uso de stickers.</p>
+      <a href="assets/images/manualfin.pdf" class="btn" download>Descargar PDF (2 MB)</a>
+      <a href="assets/images/manualfin.pdf" class="btn secondary" target="_blank">Ver vista previa</a>
+    </div>
+  </div>
+
+  <!-- STICKERS -->
+  <div class="item">
+    <img src="assets/images/stickerspreview.png" alt="Vista previa de stickers" class="preview">
+    <div class="text">
+      <h3>🎨 Plantillas de Stickers</h3>
+      <p>Incluye plantillas listos para imprimir en papel adhesivo, en tamaño tabloide y con QR integrado.</p>
+      <a href="assets/images/plantillaacos.pdf" class="btn" download>Descargar "Zona de acoso" PDF (6 MB)</a>
+      <a href="assets/images/plantillaazul.pdf" class="btn" download>Descargar "Por aquí pasamos" PDF (8 MB)</a>
+    </div>
+  </div>
+
+  <!-- CRÉDITOS -->
+  <div class="credits">
+    <p>Material bajo licencia <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a>.<br>
+    Proyecto <em>Violencias Transitorias</em></p>
+  </div>
+</section>
+
+<style>
+    body {
+        background-image: url(assets/images/fondoedit.png);
+    }
+  .descargas-vt {
+    font-family: 'Montserrat', sans-serif;
+    padding: 2rem;
+    background-color: #1a1a1a;
+    color: #fff;
+    max-width: 900px;
+    margin: auto;
+  }
+
+  .descargas-vt h2 {
+    font-size: 2rem;
+    text-align: center;
+    color: #f8447a;
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+  }
+
+  .intro {
+    text-align: center;
+    margin-bottom: 2rem;
+    color: #ccc;
+  }
+
+  .item {
+    display: flex;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+    background: #292929;
+    border-radius: 10px;
+    padding: 1rem;
+  }
+
+  .item img.preview {
+    flex: 1 1 200px;
+    max-width: 200px;
+    border-radius: 8px;
+    border: 2px solid #f8447a;
+  }
+
+  .item .text {
+    flex: 1 1 300px;
+  }
+
+  .item h3 {
+    margin-top: 0;
+    color: #8f6bff;
+  }
+
+  .btn {
+    display: inline-block;
+    padding: 0.6rem 1rem;
+    margin-right: 0.5rem;
+    margin-top: 0.5rem;
+    text-decoration: none;
+    background: #f8447a;
+    color: white;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: 0.3s;
+  }
+
+  .btn:hover {
+    background: #d63cc2;
+  }
+
+  .btn.secondary {
+    background: #8f6bff;
+  }
+
+  .btn.secondary:hover {
+    background: #6e4fd6;
+  }
+
+  .credits {
+    font-size: 0.9rem;
+    text-align: center;
+    margin-top: 2rem;
+    color: #aaa;
+  }
+
+  .credits a {
+    color: #f8447a;
+    text-decoration: underline;
+  }
+
+  @media (max-width: 600px) {
+    .item {
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+
+    .item img.preview {
+      max-width: 100%;
+    }
+  }
+</style>
+
+
 </body>

@@ -48,10 +48,19 @@
 #imginfo {
   height: 8vh;
 }
+#imginfo img {
+  height: 8vh;
+}
 #imgreg {
   height: 16vh;
 }
+#imgreg img {
+  height: 16vh;
+}
 #imgman {
+  height: 28vh;
+}
+#imgman img {
   height: 28vh;
 }
 
@@ -148,7 +157,6 @@
   top: -8%;
   z-index: 4;
   height: 40vh;
-  pointer-events: none;
 }
 .popup {
   position: fixed;
